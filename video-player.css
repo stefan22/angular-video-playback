@@ -1,7 +1,11 @@
 html, body {
 	padding:0;
 	margin:0;
-	overflow-x:hidden;
+	overflow: hidden;
+}
+
+.embed-responsive-16by9 {
+	padding-bottom: 55.25%;
 }
 
 .unselectable {
@@ -19,7 +23,7 @@ html, body {
 
 #playerToolBar {
 	background-color:#464545;
-	width: 75%;
+	width: 73.7%;
 	margin: 0 auto;
 }
 
@@ -65,12 +69,12 @@ html, body {
 	cursor: pointer;
 	text-align: center;
 	left: 15%;
-	top: 1%;
+	top: 7%;
 }
 
 #videoTitle {
 	position: absolute;
-	top: 0;
+	top: 6%;
 	left: 15%;
 	font-size: 1.3em
 	color:whitesmoke;
