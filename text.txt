@@ -1,0 +1,24 @@
+<div class="btn-group btn-group-justified">
+		<a onclick="playVideo()" class="btn btn-default">Play</a>
+		<a onclick="pauseVideo()" class="btn btn-default">Pause</a>
+		<a onclick="stopVideo()" class="btn btn-default">Stop</a>
+	</div>
+
+	<script>
+		var v = document.getElementById('videoElement');
+
+		function playVideo() {
+			v.play();
+		}
+
+		function pauseVideo() {
+			v.pause();
+		}
+
+		function stopVideo() {
+			v.pause();
+			v.currentTime = 0;
+		}
+
+
+	</script>
