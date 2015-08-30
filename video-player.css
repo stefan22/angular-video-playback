@@ -1,7 +1,7 @@
 html, body {
 	padding:0;
 	margin:0;
-	overflow:hidden;
+	overflow-x:hidden;
 }
 
 .unselectable {
@@ -19,6 +19,8 @@ html, body {
 
 #playerToolBar {
 	background-color:#464545;
+	width: 75%;
+	margin: 0 auto;
 }
 
 #playerToolBar a {
@@ -62,16 +64,18 @@ html, body {
 	font-size: 3.2em;
 	cursor: pointer;
 	text-align: center;
+	left: 15%;
+	top: 1%;
 }
 
 #videoTitle {
 	position: absolute;
 	top: 0;
-	left: 0;
+	left: 15%;
 	font-size: 1.3em
 	color:whitesmoke;
 	width: 100%;
-	margin: 5px;
+	margin: 10px;
 	margin-left: 10px;
 	text-shadow:1px 1px #333333;
 }
