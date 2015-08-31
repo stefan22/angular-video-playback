@@ -23,6 +23,20 @@ videoApp.controller('VideoController', ['$scope','$window', function($scope,$win
 
 	}
 
+	$scope.toggleMute = function() {
+		if($scope.videoDisplay.volume == 0.0) {
+			$scope.videoDisplay.volume == 1.0;
+			$('#muteBtn').children('span').toggleClass("glyphicon-volume-up", true);
+			$('#muteBtn').children('span').toggleClass('glyphicon-volume-off', false);
+
+		} else {
+			$scope.videoDisplay.volume == 0.0;
+			$('#muteBtn').children('span').toggleClass("glyphicon-volume-up", false);
+			$('#muteBtn').children('span').toggleClass("glyphicon-volume-off", true);
+		}
+
+	}
+
 
 
 }]);
