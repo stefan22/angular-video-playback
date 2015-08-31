@@ -20,13 +20,18 @@ videoApp.controller('VideoController', ['$scope','$window', function($scope,$win
 
 	$scope.updateTime = function(e) {
 		$scope.currentTime = e.target.currentTime;
+		$scope.updateLayout();
 	}
 
 	$scope.updateData = function(e) {
 		$scope.totalTime = e.target.duration;
 	}
 
-
+	$scope.updateLayout = function() {
+		if(!$scope.$$phase) {
+			$scope.$apply();
+		}
+	}
 
 
 
