@@ -6,4 +6,23 @@ videoApp.controller('VideoController', ['$scope','$window', function($scope,$win
 	$scope.titleDisplay = $window.titleDisplay;
 	$scope.videoDescription = $window.videoDescription;
 
+	$scope.videoPlaying = false;
+
+	$scope.togglePlay = function() {
+		if($scope.videoDisplay.paused) {
+			$scope.videoDisplay.play();
+			$scope.videoPlaying = true;
+			$('#playBtn').children("span").toggleClass('glyphicon-play', false);
+			$('#playBtn').children("span").toggleClass('glyphicon-pause', true);
+		} else {
+			$scope.videoDisplay.pause();
+			$scope.videoPlaying = false;
+			$('#playBtn').children('span').toggleClass('glyphicon-play', true);
+			$('#playBtn').children('span').toggleClass('glyphicon-pause', false);
+		}
+
+	}
+
+
+
 }]);
