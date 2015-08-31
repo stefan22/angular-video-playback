@@ -8,6 +8,29 @@ videoApp.controller('VideoController', ['$scope','$window', function($scope,$win
 
 	$scope.videoPlaying = false;
 
+	$scope.currentTime;
+	$scope.totalTime;
+
+	$scope.initPlayer = function() {
+		$scope.currentTime = 0;
+		$scope.totalTime = 0;
+		$scope.videoDisplay.addEventListener("timeupdate", $scope.updateTime, true);
+		$scope.videoDisplay.addEventListener("loadedmetadata", $scope.updateData, true);
+	}
+
+	$scope.updateTime = function(e) {
+		$scope.currentTime = e.target.currentTime;
+	}
+
+	$scope.updateData = function(e) {
+		$scope.totalTime = e.target.duration;
+	}
+
+
+
+
+
+
 	$scope.togglePlay = function() {
 		if($scope.videoDisplay.paused) {
 			$scope.videoDisplay.play();
@@ -37,6 +60,8 @@ videoApp.controller('VideoController', ['$scope','$window', function($scope,$win
 
 	}
 
+
+	$scope.initPlayer();
 
 
 }]);
