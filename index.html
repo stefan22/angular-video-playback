@@ -12,33 +12,17 @@
 	<script src="js/angular.min.js"></script>
 	
 </head>
-<body ng-controller="VideoController">
+<body>
 
-		<div id="fullPlayer" class="unselectable ng-cloak">
-			<div class="embed-responsive embed-responsive-16by9">
-				<video id="videoElement" ng-click="togglePlay()" width="100%" height="100%" src="{{videoSource}}"></video>
-			</div>
-			<div id="bigPlayButton" ng-click="togglePlay()" ng-hide="videoPlaying" class="well">
-				<span class="glyphicon glyphicon-play"></span>
-			</div>
-			<div id="videoTitle" ng-hide="videoPlaying">{{titleDisplay}}</div>
-			
-			<div id="playerToolBar">
-				<a id="playBtn" ng-click="togglePlay()" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></a>
-				<a id="muteBtn" ng-click="toggleMute()" class="btn btn-default"><span class="glyphicon glyphicon-volume-up"></span></a>
-				<span id="videoTime">{{currentTime | time}} / {{totalTime | time}}</span>
-			</div>	
-		</div>	
-		
-
-
-	<script>
-		var videoSource = "video/clip-nature.mp4";
-		var titleDisplay = "Nature video"
-		var videoDescription = "Just a short video that I found for this project";
-
-	</script>
-
+	<div class="embed-responsive embed-responsive-16by9">
+		<video id="VideoElement" width="100%" height="100%" src="video/clip-nature.mp4"></video>
+	</div>	
+	
+	<div class="btn-group btn-group-justified" role="group">
+		<a class="btn btn-default">Play</a>
+		<a class="btn btn-default">Pause</a>
+		<a class="btn btn-default">Stop</a>
+	</div>	
 	<script src="video-app.js"></script>
 </body>
 </html>

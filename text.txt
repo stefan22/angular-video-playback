@@ -1,24 +1,141 @@
-<div class="btn-group btn-group-justified">
-		<a onclick="playVideo()" class="btn btn-default">Play</a>
-		<a onclick="pauseVideo()" class="btn btn-default">Pause</a>
-		<a onclick="stopVideo()" class="btn btn-default">Stop</a>
-	</div>
+var videoApp = angular.module('videoApp', []);
+
+videoApp.controller('VideoController', ['$scope','$window', function($scope,$window) {
+	$scope.videoDisplay = document.getElementById('videoElement');
+	$scope.videoSource = $window.videoSource;
+	$scope.titleDisplay = $window.titleDisplay;
+	$scope.videoDescription = $window.videoDescription;
+
+	$scope.videoPlaying = false;
+
+	$scope.currentTime;
+	$scope.totalTime;
+
+	$scope.initPlayer = function() {
+		$scope.currentTime = 0;
+		$scope.totalTime = 0;
+		$scope.videoDisplay.addEventListener("timeupdate", $scope.updateTime, true);
+		$scope.videoDisplay.addEventListener("loadedmetadata", $scope.updateData, true);
+	}
+
+	$scope.updateTime = function(e) {
+		$scope.currentTime = e.target.currentTime;
+		$scope.updateLayout();
+	}
+
+	$scope.updateData = function(e) {
+		$scope.totalTime = e.target.duration;
+	}
+
+	$scope.updateLayout = function() {
+		if(!$scope.$$phase) {
+			$scope.$apply();
+		}
+	}
+
+
+
+
+	$scope.togglePlay = function() {
+		if($scope.videoDisplay.paused) {
+			$scope.videoDisplay.play();
+			$scope.videoPlaying = true;
+			$('#playBtn').children("span").toggleClass('glyphicon-play', false);
+			$('#playBtn').children("span").toggleClass('glyphicon-pause', true);
+		} else {
+			$scope.videoDisplay.pause();
+			$scope.videoPlaying = false;
+			$('#playBtn').children('span').toggleClass('glyphicon-play', true);
+			$('#playBtn').children('span').toggleClass('glyphicon-pause', false);
+		}
+
+	}
+
+	$scope.toggleMute = function() {
+		if($scope.videoDisplay.volume == 0.0) {
+			$scope.videoDisplay.volume == 1.0;
+			$('#muteBtn').children('span').toggleClass("glyphicon-volume-up", true);
+			$('#muteBtn').children('span').toggleClass('glyphicon-volume-off', false);
+
+		} else {
+			$scope.videoDisplay.volume == 0.0;
+			$('#muteBtn').children('span').toggleClass("glyphicon-volume-up", false);
+			$('#muteBtn').children('span').toggleClass("glyphicon-volume-off", true);
+		}
+
+	}
+
+
+	$scope.initPlayer();
+
+
+}]);
+
+
+videoApp.filter('time', function() {
+	return function(seconds) {
+		var hh = Math.floor(seconds/ 3600),
+		mm = Math.floor(seconds/ 60),
+		ss = Math.floor(seconds) % 60;
+
+		return hh + ":" + (mm < 10 ? "0" : "") + mm + ":" + (ss < 10 ? "0" : "") +ss;
+
+
+	};
+
+});
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	//////////////////////////////////
+
+	index.html file
+
+
+	<!DOCTYPE html>
+<html lang='en' ng-app="videoApp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Video Player</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="video-player.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/angular.min.js"></script>
+	
+</head>
+<body ng-controller="VideoController">
+
+		<div id="fullPlayer" class="unselectable ng-cloak">
+			<div class="embed-responsive embed-responsive-16by9">
+				<video id="videoElement" ng-click="togglePlay()" width="100%" height="100%" src="{{videoSource}}"></video>
+			</div>
+			<div id="bigPlayButton" ng-click="togglePlay()" ng-hide="videoPlaying" class="well">
+				<span class="glyphicon glyphicon-play"></span>
+			</div>
+			<div id="videoTitle" ng-hide="videoPlaying">{{titleDisplay}}</div>
+			
+			<div id="playerToolBar">
+				<a id="playBtn" ng-click="togglePlay()" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></a>
+				<a id="muteBtn" ng-click="toggleMute()" class="btn btn-default"><span class="glyphicon glyphicon-volume-up"></span></a>
+				<span id="videoTime">{{currentTime | time}} / {{totalTime | time}}</span>
+			</div>	
+		</div>	
+		
+
 
 	<script>
-		var v = document.getElementById('videoElement');
-
-		function playVideo() {
-			v.play();
-		}
-
-		function pauseVideo() {
-			v.pause();
-		}
-
-		function stopVideo() {
-			v.pause();
-			v.currentTime = 0;
-		}
-
+		var videoSource = "video/clip-nature.mp4";
+		var titleDisplay = "Nature video"
+		var videoDescription = "Just a short video that I found for this project";
 
 	</script>
+
+	<script src="video-app.js"></script>
+</body>
+</html>
