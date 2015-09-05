@@ -1,27 +1,12 @@
-var v = document.getElementById('VideoElement');
-
-function playVideo() {
-	v.play();
-}
-
-function pauseVideo() {
-	v.pause();
-}
-
-function stopVideo() {
-	v.pause();
-	v.currentTime = 0;
-}
+var videoApp = angular.module('videoApp', []);
 
 
 
+videoApp.controller('VideoController', ['$scope', function($scope) {
+	$scope.test = 'testing angular ok';
 
 
-
-
-
-
-
+}]);
 
 
 

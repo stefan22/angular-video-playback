@@ -12,17 +12,15 @@
 	<script src="js/angular.min.js"></script>
 	
 </head>
-<body>
+<body ng-controller="VideoController">
 
 	<div class="embed-responsive embed-responsive-16by9">
 		<video id="VideoElement" width="100%" height="100%" src="video/clip-nature.mp4"></video>
 	</div>	
+
+	{{test}}
 	
-	<div class="btn-group btn-group-justified" role="group">
-		<a class="btn btn-default" onclick="playVideo()">Play</a>
-		<a class="btn btn-default" onclick="pauseVideo()">Pause</a>
-		<a class="btn btn-default" onclick="stopVideo()">Stop</a>
-	</div>	
+	
 	<script src="video-app.js"></script>
 </body>
 </html>
