@@ -30,11 +30,16 @@ videoApp.controller('VideoController', ['$scope', '$window', function($scope,$wi
 
 
 	$scope.toggleMute = function() {
-		if($scope.videoDisplay.volume = 0.0) {
+		if($scope.videoDisplay.volume == 0.0) {
 			$scope.videoDisplay.volume = 1.0;
-			$('#muteBtn').children('span').toggleClass('gly')
+			$('#muteBtn').children('span').toggleClass('glyphicon-volume-off', false);
+			$('#muteBtn').children('span').toggleClass('glyphicon-volume-up', true);
+			
 		}else  {
 			$scope.videoDisplay.volume = 0.0;
+			$('#muteBtn').children('span').toggleClass('glyphicon-volume-up', false);
+			$('#muteBtn').children('span').toggleClass('glyphicon-volume-off', true);
+			
 		}
 
 
