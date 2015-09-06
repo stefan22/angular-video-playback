@@ -17,16 +17,18 @@
 		<div id="fullPlayer" class="unselectable ng-cloak">
 			<div class="embed-responsive embed-responsive-16by9">
 				<video id="videoElement" ng-click="togglePlay()" width="100%" height="100%" src="{{videoSource}}"></video>
+				<div id="bigPlayButton" ng-click="togglePlay()" ng-hide="videoPlaying" class="well">
+					<span class="glyphicon glyphicon-play"></span>
+				</div>
+				<div id="videoTitle" ng-hide="videoPlaying">{{titleDisplay}}</div>
 			</div>
-			<div id="bigPlayButton" ng-click="togglePlay()" ng-hide="videoPlaying" class="well">
-				<span class="glyphicon glyphicon-play"></span>
-			</div>
-			<div id="videoTitle" ng-hide="videoPlaying">{{titleDisplay}}</div>
 			
+	
 			<div id="playerToolBar">
 				<a id="playBtn" ng-click="togglePlay()" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></a>
 				<a id="muteBtn" ng-click="toggleMute()" class="btn btn-default"><span class="glyphicon glyphicon-volume-up"></span></a>
 				<span id="videoTime">{{currentTime | time}} / {{totalTime | time}}</span>
+				<a id="fsBtn" ng-click="toggleFullscreen()" class="btn btn-default pull-right"><span class="glyphicon glyphicon-fullscreen"></span></a>
 			</div>	
 		</div>	
 		
