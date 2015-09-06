@@ -17,11 +17,12 @@ videoApp.controller('VideoController', ['$scope', '$window', function($scope,$wi
 			$('#playBtn').children('span').toggleClass('glyphicon glyphicon-play', false);
 			$('#playBtn').children('span').toggleClass('glyphicon glyphicon-pause', true);
 
-		} else {
+		}else  {
 			$scope.videoDisplay.pause();
 			$scope.videoPlaying = false;
-			$('#playBtn').children('span').toggleClass('glyphicon glyphicon-play', true);
 			$('#playBtn').children('span').toggleClass('glyphicon glyphicon-pause', false);
+			$('#playBtn').children('span').toggleClass('glyphicon glyphicon-play', true);
+			
 		}
 
 
@@ -31,7 +32,8 @@ videoApp.controller('VideoController', ['$scope', '$window', function($scope,$wi
 	$scope.toggleMute = function() {
 		if($scope.videoDisplay.volume = 0.0) {
 			$scope.videoDisplay.volume = 1.0;
-		} else {
+			$('#muteBtn').children('span').toggleClass('gly')
+		}else  {
 			$scope.videoDisplay.volume = 0.0;
 		}
 
