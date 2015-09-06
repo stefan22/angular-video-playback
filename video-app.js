@@ -14,9 +14,14 @@ videoApp.controller('VideoController', ['$scope', '$window', function($scope,$wi
 		if($scope.videoDisplay.paused) {
 			$scope.videoDisplay.play();
 			$scope.videoPlaying = true;
+			$('#playBtn').children('span').toggleClass('glyphicon glyphicon-play', false);
+			$('#playBtn').children('span').toggleClass('glyphicon glyphicon-pause', true);
+
 		} else {
 			$scope.videoDisplay.pause();
 			$scope.videoPlaying = false;
+			$('#playBtn').children('span').toggleClass('glyphicon glyphicon-play', true);
+			$('#playBtn').children('span').toggleClass('glyphicon glyphicon-pause', false);
 		}
 
 
