@@ -11,6 +11,8 @@ videoApp.controller('VideoController', ['$scope','$window', function($scope,$win
 	$scope.currentTime;
 	$scope.totalTime;
 
+	$scope.showOptions = false;
+
 	$scope.initPlayer = function() {
 		$scope.currentTime = 0;
 		$scope.totalTime = 0;
@@ -33,6 +35,16 @@ videoApp.controller('VideoController', ['$scope','$window', function($scope,$win
 		}
 	}
 
+
+
+	$scope.toggleDetails = function() {
+		if($scope.showOptions) {
+			$scope.showOptions = false;
+		} else {
+			$scope.showOptions = true;
+		}
+
+	}
 
 
 

@@ -21,7 +21,24 @@
 					<span class="glyphicon glyphicon-play"></span>
 				</div>
 				<div id="videoTitle" ng-hide="videoPlaying">{{titleDisplay}}</div>
+				
+				<div id="VideoOptions" class="panel panel-default" ng-show="showOptions">
+					<div class="panel-heading">
+						<h1 class="panel-title">{{titleDisplay}}</h1>
+					</div>
+					<div class="panel-body">	
+						<div class="col-xs-6">
+							<h2>Video Details:</h2>
+							<p>{{videoDescription}}</p>
+							<p><em>Duration: {{totalTime | time}}</em></p>
+						</div>
+						<div class="col-xs-6"></div>
+					</div><!--panel-body -->	
+				</div><!-- VideoOptions -->	
+
+
 			</div>
+
 			
 	
 			<div id="playerToolBar">
@@ -29,6 +46,7 @@
 				<a id="muteBtn" ng-click="toggleMute()" class="btn btn-default"><span class="glyphicon glyphicon-volume-up"></span></a>
 				<span id="videoTime">{{currentTime | time}} / {{totalTime | time}}</span>
 				<a id="fsBtn" ng-click="toggleFullscreen()" class="btn btn-default pull-right"><span class="glyphicon glyphicon-fullscreen"></span></a>
+				<a id="detailsBtn" ng-click="toggleDetails()" class="btn btn-default pull-right"><span class="glyphicon glyphicon-option-horizontal"></span></a>
 			</div>	
 		</div>	
 		
